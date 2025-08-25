@@ -76,6 +76,7 @@ a{color:inherit}button{cursor:pointer}input,select,button{font:inherit}
   overflow: hidden;
 }
 
+<<<<<<< HEAD
 .product-card.simple .product-image img {
   width: 100%;
   height: 100%;
@@ -183,3 +184,15 @@ a{color:inherit}button{cursor:pointer}input,select,button{font:inherit}
 .status-badge.shipping{background:#ede9fe;color:#4c1d95}
 .status-badge.done{background:#dcfce7;color:#166534}
 .status-badge.cancel{background:#fee2e2;color:#b91c1c}
+=======
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-info { padding: 12px; }
+.product-title-row { display: flex; align-items: center; gap: 8px; }
+.product-description { color: #555; font-size: 13px; margin-top: 4px; }
+.product-bottom-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+>>>>>>> main

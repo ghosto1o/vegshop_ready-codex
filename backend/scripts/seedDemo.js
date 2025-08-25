@@ -8,6 +8,19 @@ import Order from '../src/models/Order.js'
 await mongoose.connect(process.env.MONGO_URI)
 console.log('[seed] connected')
 
+const buyers=[
+  { name:'คุณเอ', email:'a@example.com', phone:'0810001111', password:'123456', address:'กทม.' },
+  { name:'คุณบี', email:'b@example.com', phone:'0810002222', password:'123456', address:'นนทบุรี' },
+]
+const products=[
+  { name:"คะน้าฮ่องกง", description:"คะน้าอ่อน กรอบหวาน", category:"veg", unit:"กก.", price:55, stock:32, rating:4.6, images:["🥬"] },
+  { name:"ผักกาดหอม", description:"สดกรอบ พร้อมทาน", category:"veg", unit:"กก.", price:49, stock:24, rating:4.4, images:["🥗"] },
+  { name:"แตงกวา", description:"แตงกรอบ น้ำเยอะ", category:"veg", unit:"กก.", price:39, stock:50, rating:4.7, images:["🥒"] },
+  { name:"มะเขือเทศเชอรี่", description:"หวาน สีสด", category:"fruit", unit:"กล่อง", price:65, stock:18, rating:4.8, images:["🍅"] },
+  { name:"มะม่วงน้ำดอกไม้", description:"หวานหอม เนื้อฉ่ำ", category:"fruit", unit:"กก.", price:89, stock:20, rating:4.7, images:["🥭"] },
+  { name:"โหระพา", description:"กลิ่นหอม กำใหญ่", category:"herb", unit:"กำ", price:15, stock:100, rating:4.5, images:["🌿"] }
+]
+
 const buyerDocs=[]
 for (const b of buyers){
   const passwordHash = await bcrypt.hash(b.password, 12)

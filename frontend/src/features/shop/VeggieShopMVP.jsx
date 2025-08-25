@@ -148,6 +148,7 @@ export default function VeggieShopMVP({ onOpenAuth }){
       {/* Grid สินค้า */}
       <div className="container" style={{marginTop:12}}>
         <div className="product-grid">
+<<<<<<< HEAD
           {s.products.map(p=> {
             const discount = p.originalPrice && p.price < p.originalPrice ? Math.round(100 - (p.price / p.originalPrice) * 100) : 0
             return (
@@ -157,6 +158,33 @@ export default function VeggieShopMVP({ onOpenAuth }){
                   <img src={p.images[0]} alt={p.name} onClick={()=>setViewer({open:true, images:p.images, index:0})} />
                 ) : '🥬'}
                 {discount > 0 && <span className="discount-badge">-{discount}%</span>}
+=======
+          {s.products.map(p=> (
+            <div key={p.id} className="card product-card">
+              <div className="product-image">{p.images?.[0] ? <img src={p.images[0]} alt={p.name} /> : '🥬'}</div>
+              <div className="product-info">
+                <div className="product-title-row">
+                  <b style={{fontSize:16}}>{p.name}</b>
+                  <span className="badge">{p.category}</span>
+                </div>
+                <div className="product-description">{p.description}</div>
+                <div className="product-bottom-row">
+                  <div><b style={{fontSize:16}}>{currency(p.price)}</b> <span style={{fontSize:12,color:'#666'}}>/ {p.unit}</span></div>
+                  <button
+                    className="btn"
+                    disabled={p.stock<=0}
+                    onClick={()=>{ console.log('[Shop] add to cart', p.id); d({type:'ADD_TO_CART', id:p.id}) }}
+                    style={{
+                      background: p.stock>0? '#16a34a':'#e5e7eb',
+                      color: p.stock>0? '#fff':'#999',
+                      borderColor: p.stock>0? '#16a34a':'#e5e7eb',
+                      fontWeight:700
+                    }}
+                  >
+                    {p.stock>0?'ใส่ตะกร้า':'หมดสต็อก'}
+                  </button>
+                </div>
+>>>>>>> main
               </div>
               <div className="product-info">
                 <div className="product-title">{p.name}</div>
