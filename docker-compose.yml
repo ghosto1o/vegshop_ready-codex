@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - MONGO_URI=mongodb://mongo:27017/vegshop
+      - POSTGRES_URI=postgres://postgres:postgres@postgres:5432/vegshop
+    depends_on:
+      - mongo
+      - postgres
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=vegshop
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+volumes:
+  mongo-data:
+  postgres-data:

@@ -5,6 +5,7 @@ import helmet from 'helmet'
 import cookieParser from 'cookie-parser'
 import mongoSanitize from 'express-mongo-sanitize'
 import mongoose from 'mongoose'
+import postgres from './db/postgres.js'
 
 import health from './routes/health.js'
 import authRoutes from './routes/auth.js'
@@ -37,6 +38,15 @@ app.use('/account', account)
 app.use('/payments', payments)
 
 const PORT = process.env.PORT || 4000
-mongoose.connect(process.env.MONGO_URI).then(()=>{
-  app.listen(PORT, ()=> console.log(`[api] http://localhost:${PORT}`))
-}).catch(err=>{ console.error('[db] error', err); process.exit(1) })
+const start = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI)
+    await postgres.connect()
+    app.listen(PORT, () => console.log(`[api] http://localhost:${PORT}`))
+  } catch (err) {
+    console.error('[db] error', err)
+    process.exit(1)
+  }
+}
+
+start()
