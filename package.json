@@ -1,0 +1,11 @@
+{
+  "name": "vegshop",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "dev": "npm run dev -w backend & npm run dev -w frontend",
+    "start": "npm start -w backend",
+    "build": "npm run build -w frontend"
+  }
+}
