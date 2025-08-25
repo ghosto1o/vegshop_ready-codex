@@ -21,3 +21,4 @@ backend/uploads/
 
 # IDE configuration
 .vscode/
+.vercel
