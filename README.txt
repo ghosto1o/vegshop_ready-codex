@@ -1,3 +1,16 @@
+Environment Setup
+-----------------
+Both the backend and frontend rely on environment variables.
+Copy the example files and replace placeholders with real secrets before running or deploying:
+
+    cd backend
+    cp .env.example .env
+    # edit .env with your secrets
+
+    cd ../frontend
+    cp .env.example .env
+    # edit .env with your backend URL
+
 Quick Start (Windows PowerShell)
 --------------------------------
 Requirements: Node.js 18+, MongoDB running locally
